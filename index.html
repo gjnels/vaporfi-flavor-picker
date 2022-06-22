@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>VaporFi Flavor Picker</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img class="logo" alt="VaporFi Logo" src="img/logo.svg" width="250" />
+      </header>
+      <main>
+        <button
+          class="show-new-blend"
+          onclick="(function(){
+          const modal = document.querySelector('.new-blend');
+          const overlay = document.querySelector('.overlay');
+
+          modal.classList.toggle('hidden');
+          overlay.classList.toggle('hidden');
+          })()
+        "
+        >
+          New Flavor
+        </button>
+        <ul class="blend-list"></ul>
+
+        <button
+          onclick="(function(){
+          const blob = new Blob(['1 Strawberry | 2 Watermelon']);
+          const blobUrl = window.URL.createObjectURL(blob);
+
+          const link = document.createElement('a');
+          link.innerHTML = 'Download label';
+          link.href = blobUrl;
+          link.download = 'testlabel.lbl';
+          document.querySelector('main').appendChild(link);
+        })()"
+        >
+          Download
+        </button>
+      </main>
+    </div>
+
+    <div
+      class="overlay hidden"
+      onclick="(function(){
+      const modal = document.querySelector('.new-blend');
+      const overlay = document.querySelector('.overlay');
+      
+      modal.classList.toggle('hidden');
+      overlay.classList.toggle('hidden');
+    })()
+    "
+    ></div>
+    <div class="new-blend hidden"></div>
+  </body>
+</html>

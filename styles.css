@@ -1,0 +1,53 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+COLORS
+vf-green: #82C341
+vf-grey: #8B8A8D
+vf-darker-grey: #595959
+vf-lighter-grey: #bebaba
+*/
+
+/* GENERAL STYLES */
+body {
+  font-family: "Roboto", sans-serif;
+  /* position: relative; */
+}
+
+.container {
+  margin: 20px 40px;
+}
+
+/* FLAVOR MODAL */
+.hidden {
+  display: none;
+}
+
+.new-blend {
+  position: absolute;
+  width: 50%;
+  max-width: 500px;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #8b8a8d80;
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
