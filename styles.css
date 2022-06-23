@@ -7,38 +7,93 @@
 
 /* 
 COLORS
-vf-green: #82C341
-vf-grey: #8B8A8D
-vf-darker-grey: #595959
-vf-lighter-grey: #bebaba
+Main color: #94d82d
+Main shade 1: #74b816
+Grey color: #212529
+Accent color: #868e96
 */
 
 /* GENERAL STYLES */
 body {
   font-family: "Roboto", sans-serif;
-  /* position: relative; */
+  color: #212529;
+}
+
+ul {
+  list-style: none;
 }
 
 .container {
-  margin: 20px 40px;
+  min-height: 100vh;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+main {
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+footer {
+  font-size: 12px;
+  color: #495057;
+  margin-top: auto;
+}
+
+.btn {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #66a80f;
+  color: #f4fce3;
+  font-size: 16px;
+}
+
+.blend-list {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.blend-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.blend-btns .btn {
+  font-size: 12px;
+  padding: 6px 12px;
 }
 
 /* FLAVOR MODAL */
-.hidden {
-  display: none;
-}
-
 .new-blend {
   position: absolute;
   width: 50%;
   max-width: 500px;
-  height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 10%);
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
 }
 
 .overlay {
@@ -47,7 +102,82 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #8b8a8d80;
+  background-color: rgba(134, 142, 150, 0.1);
   backdrop-filter: blur(2px);
   z-index: 5;
+}
+
+/* BOTTLE COUNT */
+.bottle-count-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottle-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottle-count-num {
+  font-size: 18px;
+}
+
+.bottle-count-change {
+  width: 20px;
+  height: 20px;
+}
+
+.bottle-count-change:hover {
+  cursor: pointer;
+  /* stroke: #fff;
+  fill: #212529; */
+}
+
+/* FLAVORS */
+.flavors {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.flavors select {
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 8px;
+  /* display: block; */
+}
+
+.flavor-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.flavor-options li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flavor-options select {
+  text-align: left;
+}
+
+.incomplete-input {
+  font-size: 12px;
+  color: #e03131;
+  align-self: center;
+  margin-top: -4px;
+}
+
+.modal-btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hidden {
+  display: none;
 }

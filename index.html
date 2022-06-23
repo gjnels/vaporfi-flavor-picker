@@ -5,62 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- <script type="text/javascript" src="flavorings.json"></script> -->
+    <script defer type="text/javascript" src="script.js"></script>
     <title>VaporFi Flavor Picker</title>
   </head>
   <body>
     <div class="container">
       <header>
-        <img class="logo" alt="VaporFi Logo" src="img/logo.svg" width="250" />
+        <img class="logo" alt="VaporFi Logo" src="img/logo.svg" width="150" />
       </header>
       <main>
-        <button
-          class="show-new-blend"
-          onclick="(function(){
-          const modal = document.querySelector('.new-blend');
-          const overlay = document.querySelector('.overlay');
-
-          modal.classList.toggle('hidden');
-          overlay.classList.toggle('hidden');
-          })()
-        "
-        >
-          New Flavor
-        </button>
+        <button class="btn show-new-blend">New Flavor</button>
         <ul class="blend-list"></ul>
-
-        <button
-          onclick="(function(){
-          const blob = new Blob(['1 Strawberry | 2 Watermelon']);
-          const blobUrl = window.URL.createObjectURL(blob);
-
-          const link = document.createElement('a');
-          link.innerHTML = 'Download label';
-          link.href = blobUrl;
-          link.download = 'testlabel.lbl';
-          document.querySelector('main').appendChild(link);
-        })()"
-        >
-          Download
-        </button>
       </main>
+
+      <footer>
+        Created by Garrett Nelson. For use by VaporFi Columbus employees.
+      </footer>
     </div>
 
-    <div
-      class="overlay hidden"
-      onclick="(function(){
-      const modal = document.querySelector('.new-blend');
-      const overlay = document.querySelector('.overlay');
-      
-      modal.classList.toggle('hidden');
-      overlay.classList.toggle('hidden');
-    })()
-    "
-    ></div>
-    <div class="new-blend hidden"></div>
+    <div class="overlay hidden"></div>
+    <div class="new-blend hidden">
+      <div class="bottle-count-section">
+        <p>Number of bottles</p>
+        <div class="bottle-count">
+          <svg
+            class="bottle-count-change bottle-count-subtract"
+            data-bottle-change="-1"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <p class="bottle-count-num">1</p>
+          <svg
+            class="bottle-count-change bottle-count-add"
+            data-bottle-change="1"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="flavors">
+        <select class="num-flavors">
+          <option disabled selected value="">Select number of flavors</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <ul class="flavor-options hidden"></ul>
+      </div>
+      <div class="modal-btns">
+        <button class="btn btn-cancel-new-blend">Cancel</button>
+        <button class="btn btn-print-new-blend">Print</button>
+        <button class="btn btn-submit-new-blend">Submit</button>
+      </div>
+    </div>
   </body>
 </html>
