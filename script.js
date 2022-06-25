@@ -261,7 +261,10 @@ const generateNumFlavorsMarkup = function (numFlavors) {
   `;
 };
 
-const generateFlavorOptionsMarkup = function (selectedFlavor) {
+const generateFlavorOptionsMarkup = function (
+  selectedFlavor,
+  flavorsToExclude
+) {
   return `
     <select class="flavor-option">
       <option selected disabled value="">Select a flavor</option>
@@ -271,7 +274,9 @@ const generateFlavorOptionsMarkup = function (selectedFlavor) {
           <optgroup label="${category}">
           ${flavorChoices[category].reduce(
             (html, flavor) =>
-              `${html}
+              flavorsToExclude.includes(flavor)
+                ? html
+                : `${html}
               <option ${
                 selectedFlavor === flavor ? "selected" : ""
               } value="${flavor}">${flavor}</option>`,
@@ -330,6 +335,11 @@ const displayFlavorOptions = function (flavors) {
     const shots = flavors[i] ? +flavors[i][0] : 0;
     const flavor = flavors[i] ? flavors[i][1] : "";
 
+    // exclude flavors from the list of flavor options if they are in the flavors array and neither is the current flavor
+    const flavorsToExclude = flavors
+      .filter((flav) => flav[1] !== flavor)
+      .map((flav) => flav[1]);
+
     // determine if a double shot selection should be included by seeing if the flavor that is not the current flavor is listed as a double shot
     // only matter if numFlavors is 2
     const doubleShotIndex = flavors.findIndex((flavor) => +flavor[0] === 2);
@@ -337,7 +347,7 @@ const displayFlavorOptions = function (flavors) {
 
     html += `
       <li class="flavor-option-${i + 1}">
-        ${generateFlavorOptionsMarkup(flavor)}
+        ${generateFlavorOptionsMarkup(flavor, flavorsToExclude)}
         ${generateFlavorShotsMarkup(numFlavors, shots, includeDouble)}
       </li>
     `;
@@ -447,7 +457,7 @@ btnDeleteAllBlends.addEventListener("click", toggleConfirmation);
 btnDeleteYes.addEventListener("click", function () {
   state.currentBlend = createNewBlend();
   state.blends = [];
-  // setBlends();
+  setBlends();
   displayBlendList(state.blends);
   toggleConfirmation();
 });
