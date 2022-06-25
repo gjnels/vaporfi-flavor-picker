@@ -40,8 +40,6 @@ main {
   gap: 24px;
 
   flex-grow: 1;
-
-  width: 100%;
 }
 
 footer {
@@ -73,19 +71,18 @@ footer {
   flex-direction: column;
   gap: 24px;
   align-items: center;
-  width: 90%;
 }
 
 .blend-list-item {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
   width: 100%;
 }
 
 .blend-string {
   background-color: #f4fce3;
-  padding: 4px 8px;
+  padding: 4px 24px;
   flex-grow: 1;
 
   cursor: pointer;
