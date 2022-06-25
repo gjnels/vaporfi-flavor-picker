@@ -22,7 +22,10 @@
         <img class="logo" alt="VaporFi Logo" src="img/logo.svg" width="150" />
       </header>
       <main>
-        <button class="btn show-new-blend">New Flavor</button>
+        <div class="btns-flex btns-main">
+          <button class="btn btn-show-new-blend">New Blend</button>
+          <button class="btn btn-delete-all-blends">Delete All</button>
+        </div>
         <ul class="blend-list"></ul>
       </main>
 
@@ -32,7 +35,14 @@
     </div>
 
     <div class="overlay hidden"></div>
-    <div class="new-blend hidden">
+    <div class="modal confirmation hidden">
+      <p>Are you sure you want to remove all the blends from this list?</p>
+      <div class="btns-flex">
+        <button class="btn btn-yes">YES</button>
+        <button class="btn btn-no">NO</button>
+      </div>
+    </div>
+    <div class="modal new-blend hidden">
       <div class="bottle-count-section">
         <p>Number of bottles</p>
         <div class="bottle-count">
