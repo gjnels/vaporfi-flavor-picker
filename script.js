@@ -207,16 +207,20 @@ const deleteBlend = function (index) {
   displayBlendList(state.blends);
 };
 
-const generateRandomString = function (length = 16) {
-  // characters to be included in the random string
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+// TODO: change random string for label printing, labels don't print with this random string. Check how the files are downloaded by Magento. Previous random string method was working.
+// const generateRandomString = function (length = 16) {
+//   // characters to be included in the random string
+//   const chars =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  // generate the random string
-  let str = "";
-  for (let i = 0; i < length; i++)
-    str += chars[Math.floor(Math.random() * chars.length)];
-  return str;
+//   // generate the random string
+//   let str = "";
+//   for (let i = 0; i < length; i++)
+//     str += chars[Math.floor(Math.random() * chars.length)];
+//   return str;
+// };
+const generateRandomString = function (length = 14) {
+  return Math.random().toString(16).substring(2, length);
 };
 
 // download a label file to be automatically printed by a store computer
@@ -254,7 +258,7 @@ const generateBlendListItemMarkup = function (blendString, id) {
 
 const generateNumFlavorsMarkup = function (numFlavors) {
   return `
-    <option selected disabled value="">Select number of flavors</option>
+    <option selected value="">Select number of flavors</option>
     <option ${numFlavors === 1 ? "selected" : ""} value="1">1</option>
     <option ${numFlavors === 2 ? "selected" : ""} value="2">2</option>
     <option ${numFlavors === 3 ? "selected" : ""} value="3">3</option>
@@ -267,7 +271,7 @@ const generateFlavorOptionsMarkup = function (
 ) {
   return `
     <select class="flavor-option">
-      <option selected disabled value="">Select a flavor</option>
+      <option selected value="">Select a flavor</option>
       ${Object.keys(flavorChoices).reduce(
         (html, category) =>
           `${html}
@@ -296,7 +300,7 @@ const generateFlavorShotsMarkup = function (
 ) {
   return `
     <select class="flavor-num-shots">
-      <option selected disabled value="">Select number of shots</option>
+      <option selected value="">Select number of shots</option>
       <option ${
         numFlavors === 3 || numShots === 1 ? "selected" : ""
       } value="1">Single shot</option>
